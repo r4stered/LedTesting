@@ -89,5 +89,8 @@
     <ClInclude Include="FadePattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TachometerPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

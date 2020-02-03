@@ -180,6 +180,7 @@
     <ClInclude Include="RainbowPattern.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SolidColorPattern.h" />
+    <ClInclude Include="TachometerPattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

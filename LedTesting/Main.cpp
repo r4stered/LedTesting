@@ -16,10 +16,11 @@ int main(int argc, char* argv[]) {
 	LedSubsystem subsystem(window);
 
     int* currentSection = new int();
+    float* currentSpeed = new float();
     *currentSection = 0;
     float colorSelection[3];
 
-    const char* items[] = { "Solid Color", "Rainbow", "Fade"};
+    const char* items[] = { "Solid Color", "Rainbow", "Fade", "Tachometer"};
     static const char* current_item = NULL;
     static const char* previous_item = NULL;
 
@@ -50,6 +51,7 @@ int main(int argc, char* argv[]) {
 
         ImGui::Begin("Control Section");
         ImGui::SliderInt("Section", currentSection, 0, 4, "%d");
+        ImGui::SliderFloat("Speed for Tach", currentSpeed, 0, 6000, "%.1f");
         ImGui::ColorPicker3("LED Color", colorSelection);
 
         if (ImGui::BeginCombo("Mode selection", current_item))
@@ -77,6 +79,9 @@ int main(int argc, char* argv[]) {
         }
         else if (current_item == "Solid Color") {
             subsystem.SetSectionToColor(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
+        }
+        else if (current_item == "Tachometer") {
+            subsystem.SetSectionToTachometer(*currentSection, *currentSpeed, 6000);
         }
 
         previous_item = current_item;
