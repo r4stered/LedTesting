@@ -92,5 +92,8 @@
     <ClInclude Include="TachometerPattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="KnightRiderPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

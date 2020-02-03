@@ -15,6 +15,7 @@ public:
 	void SetSectionToRainbow(int section);
 	void SetSectionToFade(int section, double r, double g, double b);
 	void SetSectionToTachometer(int section, double speed, double maxSpeed);
+	void SetSectionToKnightRider(int section, double r, double g, double b);
 private:
 	LedStrip ledStrip{ nullptr };
 };
