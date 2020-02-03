@@ -83,5 +83,8 @@
     <ClInclude Include="SolidColorPattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RainbowPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

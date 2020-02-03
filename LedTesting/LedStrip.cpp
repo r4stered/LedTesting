@@ -9,11 +9,11 @@ LedStrip::LedStrip(std::shared_ptr<sf::RenderWindow> window) {
 
 void LedStrip::AddSection(int subsectionLength) {
 	if (sections.size() == 0) {
-		sections.push_back(LedSection(0, subsectionLength, SolidColorPattern(frc::Color(0,0,0), subsectionLength)));
+		sections.push_back(LedSection(0, subsectionLength));
 	}
 	else {
 		int startIdx = sections[sections.size() - 1].GetLastLedIndex();
-		sections.push_back(LedSection(startIdx, startIdx + subsectionLength, SolidColorPattern(frc::Color(0, 0, 0), subsectionLength)));
+		sections.push_back(LedSection(startIdx, startIdx + subsectionLength));
 	}
 }
 
@@ -28,6 +28,9 @@ LedSection& LedStrip::GetSection(int idx) {
 }
 
 void LedStrip::Periodic() {
+	for (int i = 0; i < sections.size(); i++) {
+		sections[i].Periodic();
+	}
 	FillBufferFromSections();
 	leds.SetData(ledBuffer);
 	leds.DrawToScreen();

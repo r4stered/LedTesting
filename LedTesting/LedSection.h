@@ -7,16 +7,17 @@
 class LedSection
 {
 public:
-	LedSection(int startLed, int endLed, LedPattern pattern);
+	LedSection(int startLed, int endLed);
 	int GetLastLedIndex();
 	int GetStartLedIndex();
 	int GetLength();
-	void SetPattern(LedPattern pattern);
+	void SetPattern(std::unique_ptr<LedPattern> pattern);
 	const std::vector<LedData>& GetCurrentBuffer();
+	void Periodic();
 private:
 	int startIndex = 0;
 	int endIndex = 0;
-	LedPattern currentPattern;
+	std::unique_ptr<LedPattern> currentPattern;
 	std::vector<LedData> currentBuffer;
 };
 

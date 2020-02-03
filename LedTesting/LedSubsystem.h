@@ -12,6 +12,7 @@ public:
 	LedSubsystem(std::shared_ptr<sf::RenderWindow> window);
 	void Periodic();
 	void SetSectionToColor(int section, double r, double g, double b);
+	void SetSectionToRainbow(int section);
 private:
 	LedStrip ledStrip{ nullptr };
 };

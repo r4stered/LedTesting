@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "SolidColorPattern.h"
+#include "RainbowPattern.h"
 
 LedSubsystem::LedSubsystem(std::shared_ptr<sf::RenderWindow> window)
 {
@@ -11,15 +12,19 @@ LedSubsystem::LedSubsystem(std::shared_ptr<sf::RenderWindow> window)
 	ledStrip.AddSection(10);
 	ledStrip.AddSection(10);
 	ledStrip.AddSection(10);
-	ledStrip.GetSection(2).SetPattern(SolidColorPattern(frc::Color(1, .67, 0), ledStrip.GetSection(2).GetLength()));
 }
 
 void LedSubsystem::Periodic()
 {
-	std::cout << "Periodic\n";
 	ledStrip.Periodic();
 }
 
 void LedSubsystem::SetSectionToColor(int section, double r, double g, double b) {
-	ledStrip.GetSection(section).SetPattern(SolidColorPattern(frc::Color(r, g, b), ledStrip.GetSection(section).GetLength()));
+	std::unique_ptr<LedPattern> pattern = std::make_unique<SolidColorPattern>(SolidColorPattern(frc::Color(r, g, b), ledStrip.GetSection(section).GetLength()));
+	ledStrip.GetSection(section).SetPattern(std::move(pattern));
+}
+
+void LedSubsystem::SetSectionToRainbow(int section) {
+	std::unique_ptr<LedPattern> pattern = std::make_unique<RainbowPattern>(RainbowPattern(ledStrip.GetSection(section).GetLength()));
+	ledStrip.GetSection(section).SetPattern(std::move(pattern));
 }

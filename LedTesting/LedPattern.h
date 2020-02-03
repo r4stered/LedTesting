@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 #include "LedData.h"
 
 class LedPattern
@@ -13,7 +14,7 @@ public:
 	const std::vector<LedData>& GetCurrentPattern() {
 		return buffer;
 	}
-	void Periodic();
+	virtual void Periodic() { };
 protected:
 	int size = 0;
 	std::vector<LedData> buffer;

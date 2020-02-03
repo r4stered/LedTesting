@@ -19,6 +19,10 @@ int main(int argc, char* argv[]) {
     *currentSection = 0;
     float colorSelection[3];
 
+    const char* items[] = { "Solid Color", "Rainbow" };
+    static const char* current_item = NULL;
+    static const char* previous_item = NULL;
+
     window->setFramerateLimit(50);
     window->setVerticalSyncEnabled(false);
     sf::Clock fpsClock;
@@ -47,10 +51,32 @@ int main(int argc, char* argv[]) {
         ImGui::Begin("Control Section");
         ImGui::SliderInt("Section", currentSection, 0, 4, "%d");
         ImGui::ColorPicker3("LED Color", colorSelection);
+
+        if (ImGui::BeginCombo("Mode selection", current_item))
+        {
+            for (int n = 0; n < IM_ARRAYSIZE(items); n++)
+            {
+                bool is_selected = (current_item == items[n]);
+                if (ImGui::Selectable(items[n], is_selected)) {
+                    current_item = items[n];
+                    if (is_selected) {
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+            }
+            ImGui::EndCombo();
+        }
+
         ImGui::End();
 
-        subsystem.SetSectionToColor(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
+        if (current_item == "Rainbow" && previous_item != current_item) {
+            subsystem.SetSectionToRainbow(*currentSection);
+        }
+        else if (current_item == "Solid Color") {
+            subsystem.SetSectionToColor(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
+        }
 
+        previous_item = current_item;
         window->clear();
         ImGui::SFML::Render(*window.get());
         subsystem.Periodic();

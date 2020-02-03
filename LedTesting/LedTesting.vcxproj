@@ -176,6 +176,7 @@
     <ClInclude Include="LedSection.h" />
     <ClInclude Include="LedStrip.h" />
     <ClInclude Include="LedSubsystem.h" />
+    <ClInclude Include="RainbowPattern.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SolidColorPattern.h" />
   </ItemGroup>
