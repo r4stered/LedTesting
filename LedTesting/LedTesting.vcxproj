@@ -171,6 +171,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Color8Bit.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="FadePattern.h" />
     <ClInclude Include="LedData.h" />
     <ClInclude Include="LedPattern.h" />
     <ClInclude Include="LedSection.h" />

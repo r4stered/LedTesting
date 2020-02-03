@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     *currentSection = 0;
     float colorSelection[3];
 
-    const char* items[] = { "Solid Color", "Rainbow" };
+    const char* items[] = { "Solid Color", "Rainbow", "Fade"};
     static const char* current_item = NULL;
     static const char* previous_item = NULL;
 
@@ -71,6 +71,9 @@ int main(int argc, char* argv[]) {
 
         if (current_item == "Rainbow" && previous_item != current_item) {
             subsystem.SetSectionToRainbow(*currentSection);
+        }
+        else if (current_item == "Fade" && previous_item != current_item) {
+            subsystem.SetSectionToFade(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
         }
         else if (current_item == "Solid Color") {
             subsystem.SetSectionToColor(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
