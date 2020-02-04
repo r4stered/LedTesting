@@ -11,7 +11,7 @@ public:
 		int idx = sectionLength + ((0.0 - sectionLength) / (maxSpeedScale - 0)) * (speedMulti - 0);
 		std::vector<LedData> gradient;
 		for (int i = 0; i < buffer.size(); i++) {
-			int hue = 0 + ((80 - 0) / (sectionLength - 0)) * (i - 0);
+			int hue = 80 + ((0 - 80) / (sectionLength - 0)) * (i - 0);
 			LedData rgb;
 			rgb.SetHSV(hue, 255, 255);
 			gradient.push_back(rgb);
