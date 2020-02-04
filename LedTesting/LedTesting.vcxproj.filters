@@ -95,5 +95,8 @@
     <ClInclude Include="KnightRiderPattern.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ChasePattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

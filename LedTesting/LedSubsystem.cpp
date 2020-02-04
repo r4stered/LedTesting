@@ -6,6 +6,7 @@
 #include "FadePattern.h"
 #include "TachometerPattern.h"
 #include "KnightRiderPattern.h"
+#include "ChasePattern.h"
 
 LedSubsystem::LedSubsystem(std::shared_ptr<sf::RenderWindow> window)
 {
@@ -44,5 +45,10 @@ void LedSubsystem::SetSectionToTachometer(int section, double speed, double maxS
 
 void LedSubsystem::SetSectionToKnightRider(int section, double r, double g, double b) {
 	std::unique_ptr<LedPattern> pattern = std::make_unique<KnightRiderPattern>(KnightRiderPattern(frc::Color(r, g, b), ledStrip.GetSection(section).GetLength()));
+	ledStrip.GetSection(section).SetPattern(std::move(pattern));
+}
+
+void LedSubsystem::SetSectionToChase(int section, double r, double b, double g) {
+	std::unique_ptr<LedPattern> pattern = std::make_unique<ChasePattern>(ChasePattern(frc::Color(r, g, b), ledStrip.GetSection(section).GetLength()));
 	ledStrip.GetSection(section).SetPattern(std::move(pattern));
 }

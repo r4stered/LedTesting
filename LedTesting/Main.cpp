@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     *currentSection = 0;
     float colorSelection[3];
 
-    const char* items[] = { "Solid Color", "Rainbow", "Fade", "Tachometer", "Knight Rider"};
+    const char* items[] = { "Solid Color", "Rainbow", "Fade", "Tachometer", "Knight Rider", "Chase"};
     static const char* current_item = NULL;
     static const char* previous_item = NULL;
 
@@ -85,6 +85,9 @@ int main(int argc, char* argv[]) {
         }
         else if (current_item == "Knight Rider" && previous_item != current_item) {
             subsystem.SetSectionToKnightRider(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
+        }
+        else if (current_item == "Chase" && previous_item != current_item) {
+            subsystem.SetSectionToChase(*currentSection, colorSelection[0], colorSelection[1], colorSelection[2]);
         }
 
         previous_item = current_item;
